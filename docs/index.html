@@ -4,71 +4,89 @@
 <head>
   <meta charset="utf-8">
   <title>症状性重度IVBS患者缺血复发风险预测</title>
-  <script src="https://unpkg.com/vue@next"></script>
-  <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
   <!-- import JavaScript -->
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <!-- <script src="https://unpkg.com/vue@next"></script> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+
+  <script src="./vue.js"></script>
+  <link rel="stylesheet" href="./index.css">
 
 </head>
 
-<body>
-  <div id="app" class="el-row ">
-    <el-button type="primary" class="el-button el-button--primary is-round">主要按钮</el-button>
-    <!-- https://element.eleme.cn/#/zh-CN/component/button -->
-    <p>侧支代偿：</p>
-    <input type="radio" id="good" value=0 v-model="bc">
-    <label for="good">好</label>
-    <br>
-    <input type="radio" id="bad" value=1 v-model="bc">
-    <label for="bad">差</label>
-    <br>
-    <p>空腹血糖：</p>
-    <input v-model="fbg" placeholder="空腹血糖，默认mg/dL">
-    <input type="radio" id="fbg_mg" value=1 v-model="fbg_unit">
-    <label for="fbg_mg">mg/dL</label>
-    <input type="radio" id="fbg_mmol" value=18 v-model="fbg_unit">
-    <label for="fbg_mmol">mmol/L</label>
-    <p>低密度脂蛋白：</p>
-    <input v-model="ldl" placeholder="低密度脂蛋白，默认mg/dL">
-    <input type="radio" id="ldl_mg" value=1 v-model="ldl_unit">
-    <label for="ldl_mg">mg/dL</label>
-    <input type="radio" id="ldl_mmol" value=38.66 v-model="ldl_unit">
-    <label for="ldl_mmol">mmol/L</label>
-    <p>初始NISS评分：</p>
-    <input v-model="niss" placeholder="初始NISS评分0-8">
-    <br>
-    <br>
-    <button @click="p0 = 1/(1+Math.exp(-1.851*bc-0.358*niss-0.017*fbg-0.021*ldl+7.875))">计算结果</button>
-    <p>---------------------参数----------------------</p>
-    <p>侧支代偿: {{ bc==0?"好":"差" }}</p>
-    <p>空腹血糖： {{ fbg*fbg_unit}} mg/dL</p>
-    <p>低密度脂蛋白： {{ ldl*ldl_unit}} mg/dL</p>
-    <p>初始NISS评分：{{niss}}</p>
+<body class="el-pagination">
 
-    <p>---------------------P(0)----------------------</p>
-    <p>{{p0}}</p>
+  <div class="el-header height">
+  </div>
+  <div class="page-container page-component">
+
+
+    <div class="">
+      <div id="app" class="el-main">
+        <div class="content element-doc content" style="width: 500px;">
+          <p>侧支代偿：</p>
+          <input class="el-radio" type="radio" id="good" value=0 v-model="bc" label="好"></input>
+          <label for="good">好</label>
+
+          <input class="el-radio" type="radio" id="bad" value=1 v-model="bc">
+          <label for="bad">差</label>
+          <br>
+          <div class="el-row">
+            <div class="el-input el-input-group el-input-group--prepend">
+              <div class="el-input-group__prepend">空腹血糖：</div>
+              <input class="el-input__inner" v-model="fbg" placeholder="空腹血糖，默认mg/dL">
+            </div>
+          </div>
+
+          <input type="radio" id="fbg_mg" value=1 v-model="fbg_unit">
+          <label for="fbg_mg">mg/dL</label>
+          <input type="radio" id="fbg_mmol" value=18 v-model="fbg_unit">
+          <label for="fbg_mmol">mmol/L</label>
+          <p>低密度脂蛋白：</p>
+          <input v-model="ldl" placeholder="低密度脂蛋白，默认mg/dL">
+          <input type="radio" id="ldl_mg" value=1 v-model="ldl_unit">
+          <label for="ldl_mg">mg/dL</label>
+          <input type="radio" id="ldl_mmol" value=38.66 v-model="ldl_unit">
+          <label for="ldl_mmol">mmol/L</label>
+          <p>初始NISS评分：</p>
+          <input v-model="niss" placeholder="初始NISS评分0-8">
+          <br>
+          <br>
+          <button @click="p0 = 1/(1+Math.exp(-1.851*bc-0.358*niss-0.017*fbg-0.021*ldl+7.875))" type="success"
+            class="el-button el-button--primary is-plain">计算结果</button>
+          <p>---------------------参数----------------------</p>
+          <p>侧支代偿: {{ bc==0?"好":"差" }}</p>
+          <p>空腹血糖： {{ fbg*fbg_unit}} mg/dL</p>
+          <p>低密度脂蛋白： {{ ldl*ldl_unit}} mg/dL</p>
+          <p>初始NISS评分：{{niss}}</p>
+
+          <p>---------------------P(0)----------------------</p>
+          <p>{{p0}}</p>
+
+        </div>
+      </div>
+    </div>
 
   </div>
-
-  <script>
-    const app = {
-      data() {
-        return {
-          bc: 0,
-          fbg: '',
-          fbg_unit: 1,
-          ldl: '',
-          ldl_unit: 1,
-          niss: 0,
-          p0: 0
-        }
+  <div class="el-footer">
+    <div class="el-container">
+    </div>
+  </div>
+</body>
+<script>
+  const app = {
+    data() {
+      return {
+        bc: 0,
+        fbg: '',
+        fbg_unit: 1,
+        ldl: '',
+        ldl_unit: 1,
+        niss: 0,
+        p0: 0
       }
     }
-
-    Vue.createApp(app).mount('#app')
-  </script>
-</body>
+  }
+  Vue.createApp(app).mount('#app')
+</script>
 
 </html>
