@@ -87,7 +87,7 @@
     <div class="el-col-24"></div>
   </div>
   <div class="el-row">
-    <div class="el-col-12 el-col-push-2">
+    <div class="el-col-10 el-col-push-3">
       <div class="el-card box-card is-always-shadow">
         <div class="el-card__header2">
           <div class="clearfix"><span>
@@ -104,7 +104,7 @@
               <div class="li">
                 <div class="el-card__tips">
                   <div class="el-col-24">
-                    <p>该网页用于计算症状性重度IVBS患者缺血风险早期复发概率。</p>
+                    <p>该网页用于计算症状性重度IVBS患者缺血风险早期复发概率</p>
                     <p>参数转换：</p>
                     <p>空腹血糖 1mmol/L≈18mg/dL</p>
                     <p>低密度脂蛋白 1mmol/L≈38.66mg/dL</p>
@@ -153,7 +153,7 @@
               <div class="li">
                 <div class="title" style="margin-left: 200px;"></div>
                 <button
-                  @click="p0 = Math.round(1000000*1/(1+Math.exp(-1.851*bc-0.358*niss-0.017*fbg-0.021*ldl+7.875)))/10000 + '%'"
+                  @click="p0 = Math.round(10000*1/(1+Math.exp(-1.851*bc-0.358*niss-0.017*fbg-0.021*ldl+7.875)))/100 + '%'"
                   type="success" class="el-button el-button--primary is-plain">计算结果</button>
               </div>
               <div>
@@ -173,7 +173,7 @@
               </div>
               <div class="li">
                 <div class="el-card__tips">
-                  本网页仅为临床决策提供参考，最终决定由临床医生和患者根据实际情况审慎思考后作出。
+                  本网页仅为临床决策提供参考，最终决定由临床医生和患者根据实际情况审慎思考后作出
                 </div>
               </div>
 
