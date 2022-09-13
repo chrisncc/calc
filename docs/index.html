@@ -154,14 +154,14 @@
               <div class="li">
                 <div class="title" style="margin-left: 200px;"></div>
                 <button
-                  @click="p0 = Math.round(10000*1/(1+Math.exp(-1.851*bc-0.358*niss-0.017*fbg-0.021*ldl+7.875)))/100 + '%'"
+                  @click="p0 = Math.round(10000*1/(1+Math.exp(-1.851*bc-0.358*niss-0.017*fbg*fbg_unit-0.021*ldl*ldl_unit+7.875)))/100 + '%'"
                   type="success" class="el-button el-button--primary is-plain">计算结果</button>
               </div>
               <div>
               </div>
               <div class="el-card__header2">
-                <!-- 
-                <p>侧支代偿: {{ bc==0?"好":"差" }}</p>
+
+                <!-- <p>侧支代偿: {{ bc==0?"好":"差" }}</p>
                 <p>空腹血糖： {{ fbg*fbg_unit}} mg/dL</p>
                 <p>低密度脂蛋白： {{ ldl*ldl_unit}} mg/dL</p>
                 <p>初始NISS评分：{{niss}}</p> -->
